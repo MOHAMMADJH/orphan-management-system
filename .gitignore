@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+migrations/__pycache__/
+*/migrations/0*.py
+!*/migrations/__init__.py
+
+# Environment variables
+.env
+*.env
+!env.example
+!.env.example
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+.cache/
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# PWA
+public/sw.js
+public/workbox-*.js
+public/worker-*.js
+
+# Misc
+*.bak
+*.tmp
+
