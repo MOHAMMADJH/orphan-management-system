@@ -234,3 +234,5 @@ rm vercel.json
 2. راجع Function logs إذا كان هناك مشاكل في runtime
 3. استخدم Netlify Support إذا كانت المشكلة من جانبهم
 
+
+

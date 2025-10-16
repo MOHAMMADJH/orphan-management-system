@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: abo-naheb-backend
+    env: python
+    rootDir: backend
+    plan: starter
+    region: oregon
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn orphan_management.wsgi:application --workers 2 --bind 0.0.0.0:$PORT
+    autoDeploy: true
+    healthCheckPath: /admin/login/
+    postDeployCommand: python manage.py migrate --noinput
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: DJANGO_SETTINGS_MODULE
+        value: orphan_management.settings
+      - key: DEBUG
+        value: "False"
+      - key: USE_POSTGRES
+        value: "True"
+      # Provide DATABASE_URL via Render dashboard or connect to Render Postgres
+      # - key: DATABASE_URL
+      #   sync: false
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com,localhost,127.0.0.1"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://*.onrender.com,https://*.netlify.app,https://aziton.netlify.app"
+      # Configure storage as needed; default local media works
+      # - key: USE_R2_STORAGE
+      #   value: "True"
+      # - key: AWS_ACCESS_KEY_ID
+      #   sync: false
+      # - key: AWS_SECRET_ACCESS_KEY
+      #   sync: false
+      # - key: AWS_STORAGE_BUCKET_NAME
+      #   value: "your-bucket"
+      # - key: AWS_S3_ENDPOINT_URL
+      #   value: "https://<accountid>.r2.cloudflarestorage.com"
+      # - key: AWS_S3_CUSTOM_DOMAIN
+      #   value: "cdn.example.com"
+
